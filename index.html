@@ -2,65 +2,60 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>foorgun</title>
   <style>
     body {
-      margin: 0;
       background-color: #000;
       color: #fff;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      font-family: "Helvetica Neue", sans-serif;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       height: 100vh;
+      margin: 0;
       text-align: center;
     }
-
     h1 {
-      font-size: 2.5rem;
-      margin-bottom: 40px;
+      font-size: 3rem;
+      margin-bottom: 2rem;
     }
-
-    .social-links {
+    .socials {
       display: flex;
       gap: 20px;
-      flex-wrap: wrap;
-      justify-content: center;
+      margin-top: 2rem;
     }
-
-    .social-button {
-      background-color: #1a1a1a;
-      padding: 10px 16px;
-      border-radius: 9999px;
-      display: inline-flex;
+    .socials a {
+      display: flex;
       align-items: center;
+      gap: 10px;
+      background-color: #1a1a1a;
+      border-radius: 25px;
+      padding: 10px 20px;
       text-decoration: none;
       color: white;
       font-size: 1rem;
-      transition: background-color 0.3s ease;
+      transition: background 0.2s ease;
     }
-
-    .social-button:hover {
+    .socials a:hover {
       background-color: #333;
     }
-
-    .social-button img {
-      height: 24px;
-      width: 24px;
-      margin-right: 8px;
+    .icon {
+      width: 20px;
+      height: 20px;
     }
   </style>
 </head>
 <body>
   <h1>Help change the world.</h1>
-  <div class="social-links">
-    <a class="social-button" href="https://www.youtube.com/@foorgun" target="_blank">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube" />
+  <div class="socials">
+    <a href="https://youtube.com/@foorgun" target="_blank">
+      <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" alt="YouTube" />
       @foorgun
     </a>
-    <a class="social-button" href="https://www.instagram.com/foorgun" target="_blank">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" />
+    <a href="https://instagram.com/foorgun" target="_blank">
+      <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_new.svg" alt="Instagram" />
       @foorgun
     </a>
   </div>
