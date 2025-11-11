@@ -4,62 +4,69 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>foorgun</title>
-<style>
-  body {
-    background-color: #000;
-    color: #fff;
-    font-family: "Helvetica Neue", sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
-    text-align: center;
-    padding: 0 20px;
-  }
-
-  h1 {
-    font-size: 3rem;
-    margin-bottom: 2rem;
-  }
-
-  .socials {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-  }
-
-  .socials a {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background-color: #1a1a1a;
-    border-radius: 25px;
-    padding: 10px 20px;
-    text-decoration: none;
-    color: white;
-    font-size: 1rem;
-    transition: background 0.2s ease;
-    white-space: nowrap;
-  }
-
-  .socials a:hover {
-    background-color: #333;
-  }
-
-  .icon {
-    width: 20px;
-    height: 20px;
-  }
-
-  @media (max-width: 500px) {
-    h1 {
-      font-size: 2.2rem;
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: "Helvetica Neue", sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+      padding: 0 20px;
     }
-  }
-</style>
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 2rem;
+    }
+
+    .socials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .socials a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background-color: #1a1a1a;
+      border-radius: 25px;
+      padding: 10px 20px;
+      text-decoration: none;
+      color: white;
+      font-size: 1rem;
+      transition: background 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .socials a:hover {
+      background-color: #333;
+    }
+
+    .icon {
+      width: 20px;
+      height: 20px;
+    }
+
+    #copyNotice {
+      display: none;
+      margin-top: 10px;
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 500px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <h1>Help change the world.</h1>
@@ -72,14 +79,28 @@
       <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_new.svg" alt="Instagram" />
       @foorgun
     </a>
-    <a href="mailto:hello@foorgun.com">
+    <a href="javascript:void(0);" onclick="copyEmail()">
       <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Mail_%28iOS%29.svg" alt="Email" />
-      @foorgun
+      hello@foorgun.com
     </a>
     <a href="https://www.linkedin.com/in/furkan-cetin-660004211/" target="_blank">
       <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" alt="LinkedIn" />
       Furkan Cetin
     </a>
   </div>
+  <div id="copyNotice">Mail copied!</div>
+
+  <script>
+    function copyEmail() {
+      const email = "hello@foorgun.com";
+      navigator.clipboard.writeText(email).then(() => {
+        const notice = document.getElementById("copyNotice");
+        notice.style.display = "block";
+        setTimeout(() => {
+          notice.style.display = "none";
+        }, 2000);
+      });
+    }
+  </script>
 </body>
 </html>
