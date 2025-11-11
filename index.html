@@ -29,9 +29,10 @@
       flex-wrap: wrap;
       gap: 20px;
       justify-content: center;
+      position: relative;
     }
 
-    .socials a {
+    .social-button {
       display: flex;
       align-items: center;
       gap: 10px;
@@ -45,7 +46,7 @@
       white-space: nowrap;
     }
 
-    .socials a:hover {
+    .social-button:hover {
       background-color: #333;
     }
 
@@ -54,23 +55,29 @@
       height: 20px;
     }
 
-    .email-container {
+    .email-wrapper {
+      position: relative;
       display: flex;
       flex-direction: column;
       align-items: center;
-      position: relative;
     }
 
     #copyNotice {
       display: none;
-      margin-top: 6px;
+      margin-top: 8px;
       color: #aaa;
       font-size: 0.9rem;
+      position: absolute;
+      bottom: -25px;
     }
 
     @media (max-width: 500px) {
       h1 {
         font-size: 2.2rem;
+      }
+
+      #copyNotice {
+        position: static;
       }
     }
   </style>
@@ -78,22 +85,22 @@
 <body>
   <h1>Help change the world.</h1>
   <div class="socials">
-    <a href="https://youtube.com/@foorgun" target="_blank">
+    <a class="social-button" href="https://youtube.com/@foorgun" target="_blank">
       <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" alt="YouTube" />
       @foorgun
     </a>
-    <a href="https://instagram.com/foorgun" target="_blank">
+    <a class="social-button" href="https://instagram.com/foorgun" target="_blank">
       <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_new.svg" alt="Instagram" />
       @foorgun
     </a>
-    <div class="email-container">
-      <a href="javascript:void(0);" onclick="copyEmail()">
+    <div class="email-wrapper">
+      <a class="social-button" href="javascript:void(0);" onclick="copyEmail()">
         <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Mail_%28iOS%29.svg" alt="Email" />
         hello@foorgun.com
       </a>
       <div id="copyNotice">Mail copied!</div>
     </div>
-    <a href="https://www.linkedin.com/in/furkan-cetin-660004211/" target="_blank">
+    <a class="social-button" href="https://www.linkedin.com/in/furkan-cetin-660004211/" target="_blank">
       <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" alt="LinkedIn" />
       Furkan Cetin
     </a>
