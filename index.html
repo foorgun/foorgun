@@ -54,21 +54,25 @@
       height: 20px;
     }
 
-#copyNotice {
-  display: none;
-  margin-top: 10px;
-  color: #aaa;
-  font-size: 0.9rem;
-}
+    .email-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
 
-@media (min-width: 501px) {
-  #copyNotice {
-    position: absolute;
-    transform: translateX(-50%);
-    left: 50%;
-    margin-top: 50px;
-  }
-}
+    #copyNotice {
+      display: none;
+      margin-top: 6px;
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 500px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -82,16 +86,18 @@
       <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_new.svg" alt="Instagram" />
       @foorgun
     </a>
-    <a href="javascript:void(0);" onclick="copyEmail()">
-      <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Mail_%28iOS%29.svg" alt="Email" />
-      hello@foorgun.com
-    </a>
+    <div class="email-container">
+      <a href="javascript:void(0);" onclick="copyEmail()">
+        <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Mail_%28iOS%29.svg" alt="Email" />
+        hello@foorgun.com
+      </a>
+      <div id="copyNotice">Mail copied!</div>
+    </div>
     <a href="https://www.linkedin.com/in/furkan-cetin-660004211/" target="_blank">
       <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" alt="LinkedIn" />
       Furkan Cetin
     </a>
   </div>
-  <div id="copyNotice">Mail copied!</div>
 
   <script>
     function copyEmail() {
