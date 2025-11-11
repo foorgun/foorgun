@@ -13,7 +13,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      min-height: 100vh;
       margin: 0;
       text-align: center;
       padding: 0 20px;
@@ -31,7 +31,7 @@
       justify-content: center;
     }
 
-    .socials a {
+    .socials a, .socials div.copy-mail {
       display: flex;
       align-items: center;
       gap: 10px;
@@ -43,9 +43,10 @@
       font-size: 1rem;
       transition: background 0.2s ease;
       white-space: nowrap;
+      cursor: pointer;
     }
 
-    .socials a:hover {
+    .socials a:hover, .socials div.copy-mail:hover {
       background-color: #333;
     }
 
@@ -54,55 +55,54 @@
       height: 20px;
     }
 
-    .email-wrapper {
+    .mail-feedback {
+      overflow: hidden;
+      height: 0;
+      transition: height 0.3s ease;
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
+      justify-content: center;
     }
 
-    .copied-message {
+    .mail-feedback.show {
+      height: 30px;
+    }
+
+    .mail-feedback span {
+      font-size: 1rem;
       color: #ccc;
-      margin-top: 8px;
-      font-size: 0.9rem;
-      opacity: 0;
-      transition: opacity 0.3s ease;
+      margin-top: 5px;
     }
 
-    .copied-message.visible {
-      opacity: 1;
-    }
-
-    @media (max-width: 500px) {
+    @media (max-width: 600px) {
       h1 {
         font-size: 2.2rem;
       }
 
       .socials {
         flex-direction: column;
-        align-items: center;
+        gap: 15px;
       }
     }
   </style>
 </head>
 <body>
+
   <h1>Help change the world.</h1>
+
   <div class="socials">
     <a href="https://youtube.com/@foorgun" target="_blank">
       <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" alt="YouTube" />
       @foorgun
     </a>
+
     <a href="https://instagram.com/foorgun" target="_blank">
       <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_new.svg" alt="Instagram" />
       @foorgun
     </a>
 
-    <div class="email-wrapper">
-      <a href="#" onclick="copyEmail(event)">
-        <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Mail_%28iOS%29.svg" alt="Email" />
-        hello@foorgun.com
-      </a>
-      <div id="copied" class="copied-message">Mail copied!</div>
+    <div class="copy-mail" onclick="copyMail()">
+      <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Mail_%28iOS%29.svg" alt="Email" />
+      hello@foorgun.com
     </div>
 
     <a href="https://www.linkedin.com/in/furkan-cetin-660004211/" target="_blank">
@@ -111,14 +111,22 @@
     </a>
   </div>
 
+  <div id="feedback" class="mail-feedback">
+    <span>Mail copied!</span>
+  </div>
+
   <script>
-    function copyEmail(event) {
-      event.preventDefault();
-      navigator.clipboard.writeText("hello@foorgun.com");
-      const copied = document.getElementById("copied");
-      copied.classList.add("visible");
-      setTimeout(() => copied.classList.remove("visible"), 2000);
+    function copyMail() {
+      navigator.clipboard.writeText("hello@foorgun.com").then(() => {
+        const feedback = document.getElementById("feedback");
+        feedback.classList.add("show");
+
+        setTimeout(() => {
+          feedback.classList.remove("show");
+        }, 2000);
+      });
     }
   </script>
+
 </body>
 </html>
