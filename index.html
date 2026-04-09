@@ -70,60 +70,6 @@
       color: #888;
     }
 
-    .cta-row {
-      position: relative;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 3rem;
-    }
-
-    .btn-work {
-      background: #1a1a1a;
-      color: #fff;
-      font-size: 13px;
-      font-weight: 500;
-      border: 0.5px solid #333;
-      border-radius: 24px;
-      padding: 11px 22px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: background 0.15s;
-    }
-
-    .btn-work:hover { background: #222; }
-
-    .btn-icon {
-      width: 22px;
-      height: 22px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .btn-icon img { width: 20px; height: 20px; }
-
-    .toast {
-      position: absolute;
-      left: 0;
-      top: 52px;
-      background: #1c1c1c;
-      border: 0.5px solid #2a2a2a;
-      border-radius: 12px;
-      padding: 10px 18px;
-      font-size: 13px;
-      color: #ccc;
-      white-space: nowrap;
-      display: none;
-      align-items: center;
-      z-index: 10;
-    }
-
-    .toast.show { display: flex; }
-
     .divider {
       border: none;
       border-top: 0.5px solid #141414;
@@ -154,10 +100,16 @@
       align-items: center;
       gap: 12px;
       text-decoration: none;
+      cursor: pointer;
       transition: border-color 0.15s;
+      position: relative;
     }
 
     .link-card:hover { border-color: #333; }
+
+    .link-card.mail-card {
+      border-color: #252525;
+    }
 
     .link-icon {
       width: 32px;
@@ -185,6 +137,23 @@
       margin-top: 2px;
     }
 
+    .toast {
+      position: absolute;
+      left: 0;
+      top: calc(100% + 8px);
+      background: #1c1c1c;
+      border: 0.5px solid #2a2a2a;
+      border-radius: 10px;
+      padding: 8px 16px;
+      font-size: 13px;
+      color: #ccc;
+      white-space: nowrap;
+      display: none;
+      z-index: 10;
+    }
+
+    .toast.show { display: block; }
+
     .about-card {
       background: #080808;
       border: 0.5px solid #181818;
@@ -203,7 +172,6 @@
     @media (max-width: 480px) {
       .hero-title { font-size: 28px; }
       .link-grid { grid-template-columns: 1fr; }
-      .toast { position: static; margin-top: 8px; }
     }
   </style>
 </head>
@@ -213,7 +181,7 @@
     <p class="hero-name">Furkan Cetin</p>
     <h1 class="hero-title">I build intelligent<br>automation systems.</h1>
     <p class="hero-sub1">Workflow Automation · AI Integration · APIs</p>
-    <p class="hero-sub2">Helping businesses save time & scale processes — without the corporate overhead.</p>
+    <p class="hero-sub2">Helping businesses save time & scale processes - without the corporate overhead.</p>
 
     <div class="tags-row">
       <span class="pill">n8n</span>
@@ -222,20 +190,21 @@
       <span class="pill">AI Agents</span>
     </div>
 
-    <div class="cta-row">
-      <button class="btn-work" onclick="copyEmail()">
-        <div class="btn-icon">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Mail_%28iOS%29.svg" alt="Email" />
-        </div>
-        Let's work together!
-      </button>
-      <div class="toast" id="toast">Mail copied!</div>
-    </div>
-
     <hr class="divider">
     <p class="section-label">Links</p>
 
     <div class="link-grid">
+      <div class="link-card mail-card" onclick="copyEmail()">
+        <div class="link-icon">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Mail_%28iOS%29.svg" alt="Email" />
+        </div>
+        <div class="link-text">
+          <div class="name">Let's work together!</div>
+          <div class="desc">hello@foorgun.com</div>
+        </div>
+        <div class="toast" id="toast">Mail copied!</div>
+      </div>
+
       <a class="link-card" href="https://www.linkedin.com/in/furkan-cetin-660004211/" target="_blank" rel="noopener">
         <div class="link-icon">
           <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" alt="LinkedIn" />
@@ -245,6 +214,7 @@
           <div class="desc">Professional updates</div>
         </div>
       </a>
+
       <a class="link-card" href="https://youtube.com/@foorgun" target="_blank" rel="noopener">
         <div class="link-icon">
           <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" alt="YouTube" />
@@ -254,6 +224,7 @@
           <div class="desc">Travel · fights · engineer life</div>
         </div>
       </a>
+
       <a class="link-card" href="https://instagram.com/foorgun" target="_blank" rel="noopener">
         <div class="link-icon">
           <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_new.svg" alt="Instagram" />
