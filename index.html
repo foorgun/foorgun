@@ -3,132 +3,287 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>foorgun</title>
+  <title>Furkan Cetin — foorgun.com</title>
+  <meta name="description" content="I build intelligent automation systems. Workflow Automation · AI Integration · APIs" />
   <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
-      background-color: #000;
+      background: #000;
       color: #fff;
-      font-family: "Helvetica Neue", sans-serif;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      min-height: 100vh;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
-      margin: 0;
-      text-align: center;
-      padding: 0 20px;
+      padding: 2rem 1.5rem;
     }
 
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 2.5rem;
-      line-height: 1.4;
+    .page {
+      max-width: 640px;
+      width: 100%;
+      padding: 3rem 0 4rem;
     }
 
-    .socials {
+    .hero-name {
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 8px;
+    }
+
+    .hero-title {
+      font-size: 36px;
+      font-weight: 500;
+      line-height: 1.2;
+      color: #fff;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-sub1 {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-sub2 {
+      font-size: 15px;
+      color: #888;
+      line-height: 1.7;
+      max-width: 480px;
+      margin-bottom: 2rem;
+    }
+
+    .tags-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
+      gap: 8px;
+      margin-bottom: 2.5rem;
     }
 
-    .social-button {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background-color: #1a1a1a;
-      border-radius: 25px;
-      padding: 10px 20px;
-      text-decoration: none;
-      color: white;
-      font-size: 1rem;
-      transition: background 0.2s ease;
-      white-space: nowrap;
+    .pill {
+      font-size: 12px;
+      background: #0e0e0e;
+      border: 0.5px solid #222;
+      border-radius: 20px;
+      padding: 5px 14px;
+      color: #888;
     }
 
-    .social-button:hover {
-      background-color: #333;
-    }
-
-    .icon {
-      width: 20px;
-      height: 20px;
-    }
-
-    .email-wrapper {
+    .cta-row {
       position: relative;
       display: flex;
-      flex-direction: column;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 3rem;
+    }
+
+    .btn-work {
+      background: #1a1a1a;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 500;
+      border: 0.5px solid #333;
+      border-radius: 24px;
+      padding: 11px 22px;
+      cursor: pointer;
+      display: flex;
       align-items: center;
+      gap: 8px;
+      transition: background 0.15s;
     }
 
-    #copyNotice {
-      display: none;
-      margin-top: 8px;
-      color: #aaa;
-      font-size: 0.9rem;
+    .btn-work:hover { background: #222; }
+
+    .btn-icon {
+      width: 22px;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .btn-icon img { width: 20px; height: 20px; }
+
+    .toast {
       position: absolute;
-      bottom: -25px;
+      left: 0;
+      top: 52px;
+      background: #1c1c1c;
+      border: 0.5px solid #2a2a2a;
+      border-radius: 12px;
+      padding: 10px 18px;
+      font-size: 13px;
+      color: #ccc;
+      white-space: nowrap;
+      display: none;
+      align-items: center;
+      z-index: 10;
     }
 
-    @media (max-width: 500px) {
-      h1 {
-        font-size: 2.2rem;
-      }
+    .toast.show { display: flex; }
 
-      #copyNotice {
-        position: static;
-      }
+    .divider {
+      border: none;
+      border-top: 0.5px solid #141414;
+      margin: 2rem 0;
+    }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #444;
+      margin-bottom: 1rem;
+    }
+
+    .link-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 2rem;
+    }
+
+    .link-card {
+      background: #0b0b0b;
+      border: 0.5px solid #1a1a1a;
+      border-radius: 12px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      transition: border-color 0.15s;
+    }
+
+    .link-card:hover { border-color: #333; }
+
+    .link-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      background: #111;
+      border: 0.5px solid #1e1e1e;
+    }
+
+    .link-icon img { width: 18px; height: 18px; }
+
+    .link-text .name {
+      font-size: 13px;
+      font-weight: 500;
+      color: #d0d0d0;
+    }
+
+    .link-text .desc {
+      font-size: 11px;
+      color: #555;
+      margin-top: 2px;
+    }
+
+    .about-card {
+      background: #080808;
+      border: 0.5px solid #181818;
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+    }
+
+    .about-card p {
+      font-size: 14px;
+      color: #777;
+      line-height: 1.8;
+    }
+
+    .about-card .hl { color: #d0d0d0; }
+
+    @media (max-width: 480px) {
+      .hero-title { font-size: 28px; }
+      .link-grid { grid-template-columns: 1fr; }
+      .toast { position: static; margin-top: 8px; }
     }
   </style>
 </head>
 <body>
+  <div class="page">
 
-  <h1>saving people’s time by integrating automation & AI into their processes</h1>
+    <p class="hero-name">Furkan Cetin</p>
+    <h1 class="hero-title">I build intelligent<br>automation systems.</h1>
+    <p class="hero-sub1">Workflow Automation · AI Integration · APIs</p>
+    <p class="hero-sub2">Helping businesses save time & scale processes — without the corporate overhead.</p>
 
-  <div class="socials">
-
-    <!-- Mail -->
-    <div class="email-wrapper">
-      <a class="social-button" href="javascript:void(0);" onclick="copyEmail()">
-        <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Mail_%28iOS%29.svg" alt="Email" />
-        Let’s work together!
-      </a>
-      <div id="copyNotice">Mail copied!</div>
+    <div class="tags-row">
+      <span class="pill">n8n</span>
+      <span class="pill">Make.com</span>
+      <span class="pill">AI APIs</span>
+      <span class="pill">AI Agents</span>
     </div>
 
-    <!-- LinkedIn -->
-    <a class="social-button" href="https://www.linkedin.com/in/furkan-cetin-660004211/" target="_blank">
-      <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" alt="LinkedIn" />
-      LinkedIn
-    </a>
+    <div class="cta-row">
+      <button class="btn-work" onclick="copyEmail()">
+        <div class="btn-icon">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Mail_%28iOS%29.svg" alt="Email" />
+        </div>
+        Let's work together!
+      </button>
+      <div class="toast" id="toast">Mail copied!</div>
+    </div>
 
-    <!-- YouTube -->
-    <a class="social-button" href="https://youtube.com/@foorgun" target="_blank">
-      <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" alt="YouTube" />
-      YouTube
-    </a>
+    <hr class="divider">
+    <p class="section-label">Links</p>
 
-    <!-- Instagram -->
-    <a class="social-button" href="https://instagram.com/foorgun" target="_blank">
-      <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_new.svg" alt="Instagram" />
-      Instagram
-    </a>
+    <div class="link-grid">
+      <a class="link-card" href="https://www.linkedin.com/in/furkan-cetin-660004211/" target="_blank" rel="noopener">
+        <div class="link-icon">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" alt="LinkedIn" />
+        </div>
+        <div class="link-text">
+          <div class="name">LinkedIn</div>
+          <div class="desc">Professional updates</div>
+        </div>
+      </a>
+      <a class="link-card" href="https://youtube.com/@foorgun" target="_blank" rel="noopener">
+        <div class="link-icon">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" alt="YouTube" />
+        </div>
+        <div class="link-text">
+          <div class="name">YouTube</div>
+          <div class="desc">Travel · fights · engineer life</div>
+        </div>
+      </a>
+      <a class="link-card" href="https://instagram.com/foorgun" target="_blank" rel="noopener">
+        <div class="link-icon">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_new.svg" alt="Instagram" />
+        </div>
+        <div class="link-text">
+          <div class="name">Instagram</div>
+          <div class="desc">Life · Muay Thai · no 9-5</div>
+        </div>
+      </a>
+    </div>
+
+    <hr class="divider">
+    <p class="section-label">About</p>
+    <div class="about-card">
+      <p>
+        <span class="hl">Automation engineer</span> building practical workflow systems for small teams & growing businesses.<br><br>
+        Based in <span class="hl">Ulm, Germany</span> · working remote · available for freelance projects.
+      </p>
+    </div>
 
   </div>
 
   <script>
     function copyEmail() {
-      const email = "hello@foorgun.com";
-      navigator.clipboard.writeText(email).then(() => {
-        const notice = document.getElementById("copyNotice");
-        notice.style.display = "block";
-        setTimeout(() => {
-          notice.style.display = "none";
-        }, 2000);
+      navigator.clipboard.writeText('hello@foorgun.com').then(function () {
+        var toast = document.getElementById('toast');
+        toast.classList.add('show');
+        setTimeout(function () { toast.classList.remove('show'); }, 2500);
       });
     }
   </script>
-
 </body>
 </html>
